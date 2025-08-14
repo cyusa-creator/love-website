@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love ❤️ Ineza</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+body { font-family:'Roboto', sans-serif; background:linear-gradient(to right, #ff9a9e, #fad0c4); color:#333; overflow-x:hidden; position:relative; }
+header { text-align:center; padding:60px 20px; }
+header h1 { font-family:'Pacifico', cursive; font-size:3.5em; color:#fff; cursor:pointer; }
+header p { font-size:1.3em; color:#fff; margin-top:10px; }
+
+.floating { position:absolute; font-size:1.5em; color:#ff6f91; opacity:0.8; pointer-events:none; animation: floatLinear linear infinite; }
+@keyframes floatLinear { 0% {transform: translateY(100vh) translateX(0) scale(1);} 100% {transform: translateY(-10vh) translateX(50px) scale(1.3);} }
+
+.container { max-width:1000px; margin:40px auto; padding:0 20px; }
+.section { margin-bottom:60px; text-align:center; opacity:0; transform:translateY(30px); transition: all 1s ease; }
+.section.show { opacity:1; transform:translateY(0); }
+.section h2 { font-size:2em; color:#ff6f91; margin-bottom:20px; }
+.section p { font-size:1.2em; line-height:1.6; max-width:700px; margin:0 auto; }
+
+.slideshow-container { position:relative; width:100%; max-width:900px; margin:0 auto; border-radius:20px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,0.3); }
+.slides { display:none; width:100%; }
+.slides img, .slides video { width:100%; height:auto; max-height:500px; border-radius:20px; object-fit:cover; transition: transform 0.3s ease; }
+.slides img:hover, .slides video:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(255,105,145,0.7); }
+.prev, .next { position:absolute; top:50%; transform:translateY(-50%); color:#fff; font-size:2em; padding:10px; cursor:pointer; background:rgba(0,0,0,0.3); border-radius:50%; z-index:5; }
+.prev {left:10px;} .next {right:10px;}
+
+.love-btn { margin:20px auto; padding:12px 25px; background:#ff6f91; color:#fff; border:none; border-radius:10px; cursor:pointer; font-size:1.2em; transition: all 0.3s ease; }
+.love-btn:hover { background:#ff85a1; transform: scale(1.1); box-shadow: 0 5px 20px rgba(255,105,145,0.5); }
+
+footer { text-align:center; padding:30px 20px; color:#fff; font-size:1.1em; font-family:'Pacifico', cursive; }
+
+.popup { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%) scale(0); background: rgba(255,255,255,0.95); color:#333; padding:30px 40px; border-radius:20px; box-shadow:0 10px 40px rgba(0,0,0,0.4); text-align:center; font-size:1.3em; transition: transform 0.4s ease; z-index:10; }
+.popup.show { transform:translate(-50%,-50%) scale(1); }
+.popup button { margin-top:20px; padding:10px 20px; border:none; background:#ff6f91; color:#fff; border-radius:10px; cursor:pointer; }
+.popup button:hover { background:#ff85a1; }
+
+#videoPopup { position: fixed; top:50%; left:50%; transform:translate(-50%,-50%) scale(0); background: rgba(0,0,0,0.95); padding:20px; border-radius:20px; z-index:20; max-width:90%; width:600px; transition: transform 0.3s ease; }
+#videoPopup.show { transform:translate(-50%,-50%) scale(1); }
+#videoPopup video { border-radius:15px; object-fit:cover; width:100%; max-height:400px; }
+
+@media(max-width:600px){ .slides img, .slides video {height:auto;} }
+
+
+/* Enhanced Footer */
+.romantic-footer {
+  background: linear-gradient(to right, #ff6f91, #ffdde1);
+  color: #fff;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+  font-family: 'Pacifico', cursive;
+  font-size: 1.2em;
+  position: relative;
+  overflow: hidden;
+}
+
+.romantic-footer p {
+  margin: 10px 0;
+  line-height: 1.6;
+  text-shadow: 1px 1px 5px rgba(0,0,0,0.3);
+}
+
+.romantic-footer:hover {
+  background: linear-gradient(to right, #ff85a1, #ffe1e6);
+  transition: background 0.5s ease;
+}
+
+/* Optional floating hearts in footer for extra romance */
+.romantic-footer::before {
+  content: '❤️💕🌹✨';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 2em;
+  animation: floatFooterHearts 4s linear infinite;
+  opacity: 0.5;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Background music -->
+<audio id="bgMusic" src="music/anytime.mp3" autoplay loop></audio>
+
+<header>
+  <h1 id="inezaName">❤️ For My Love, Ineza ❤️</h1>
+  <p>Every moment with you is magical, Miss Beautiful 🌹✨</p>
+</header>
+
+<script>
+const colors = ['❤️','💖','💕','💘','🌹','✨'];
+for(let i=0;i<30;i++){
+  let span = document.createElement('div');
+  span.className='floating';
+  span.style.left=Math.random()*100+'%';
+  span.style.animationDuration=(4+Math.random()*4)+'s';
+  span.style.fontSize=(15+Math.random()*25)+'px';
+  span.innerHTML = colors[Math.floor(Math.random()*colors.length)];
+  document.body.appendChild(span);
+}
+</script>
+
+<div class="container">
+
+  <!-- Words Section -->
+  <section class="section" id="words">
+    <h2>Love Of My Life LOML 💖</h2>
+    <p>Hey love, I just want you to know that you are the most amazing person in my life. Your smile lights up my day 🌞, your laughter is music to my soul 🎶, and your love completes me 💕.</p>
+    <button class="love-btn" onclick="showMessage('Ineza, you are my sunshine 🌞!'); confettiEffect();">Click me 💌</button>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section" id="gallery">
+    <h2>Memories Gallery</h2>
+    <div class="slideshow-container">
+      <div class="slides fade"><img src="images/ine.jpg" alt="Memory 1"></div>
+      <div class="slides fade"><img src="images/inez.jpeg" alt="Memory 2"></div>
+      <div class="slides fade"><img src="images/one.jpeg" alt="Memory 3"></div>
+      <div class="slides fade"><img src="images/two.jpeg" alt="Memory 4"></div>
+      <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+      <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+    <button class="love-btn" onclick="showVideoPopup('videos/fav.mp4')">Click to see my favourite 💌</button>
+  </section>
+
+  <!-- Notes Section -->
+  <section class="section" id="notes">
+    <h2>Special Notes</h2>
+    <p>Whenever you feel down, remember that I'm always here for you 💞. No distance, no time can change how much I love you ❤️.</p>
+    <button class="love-btn" onclick="showMessage('Ineza, my heart beats only for you ❤️'); confettiEffect();">Click me 💌</button>
+  </section>
+
+  <!-- Video Section -->
+  <section class="section" id="video-section">
+    <h2>Special Moments 💖</h2>
+    <div class="video-buttons">
+      <button class="love-btn" onclick="showVideoPopup('videos/inevi.mp4')">Surprise 1 🎥</button>
+      <button class="love-btn" onclick="showVideoPopup('videos/inevid.mp4')">Surprise 2 🎥</button>
+      <button class="love-btn" onclick="showVideoPopup('videos/fav.mp4')">Surprise 3 🎥</button>
+    </div>
+  </section>
+
+  <!-- Lovely Memories Section -->
+  <section class="section" id="lovely-memories">
+    <h2>Our Lovely Memories 💖</h2>
+    <div class="video-buttons">
+      <button class="love-btn" onclick="showMemoryQuestion()">Our Favourite Night 🌙</button>
+      <button class="love-btn" onclick="showFriendlyNightQuestion()">Our Favourite Friendly Night in Simba 🎉</button>
+    </div>
+  </section>
+
+  <!-- Miss You Section -->
+  <section class="section" id="miss-you-unique">
+    <h2 style="font-family:'Pacifico', cursive; color:#ff6f91; font-size:2.5em; margin-bottom:20px;">I Miss You So Much 💖</h2>
+    <button class="love-btn" id="checkLoveBtn">Please Check My Love 💖</button>
+  </section>
+
+</div>
+
+<!-- Popups -->
+
+<div class="popup" id="popup">
+  <p id="popupText"></p>
+  <button onclick="closePopup()">Close 💖</button>
+</div>
+
+<div class="popup" id="videoPopup">
+  <video id="popupVideo" controls autoplay loop muted></video>
+  <button onclick="closeVideoPopup()">Close 💖</button>
+</div>
+
+<!-- Memory Questions -->
+<div class="popup" id="memoryPopup">
+  <p>Do you remember our favourite whole night in the same room holding you? 💖</p>
+  <div>
+    <button onclick="memoryAnswer(true)">Yes 🌟</button>
+    <button onclick="memoryAnswer(false)">No ❌</button>
+  </div>
+</div>
+<div class="popup" id="memoryRecoverPopup">
+  <p>May I show you the video we took going back home 💞</p>
+  <div>
+    <button onclick="recoverAnswer(true)">Yes 💖</button>
+    <button onclick="recoverAnswer(false)">No ❌</button>
+  </div>
+</div>
+
+<!-- Friendly Night Questions -->
+<div class="popup" id="friendlyNightPopup">
+  <p>Do you remember our favourite friendly night in Simba? 🎉</p>
+  <div>
+    <button onclick="friendlyNightAnswer(true)">Yes 🌟</button>
+    <button onclick="friendlyNightAnswer(false)">No ❌</button>
+  </div>
+</div>
+<div class="popup" id="friendlyRecoverPopup">
+  <p>Should I show you the video, my love? 💖</p>
+  <div>
+    <button onclick="friendlyRecoverAnswer(true)">Yes 💞</button>
+    <button onclick="friendlyRecoverAnswer(false)">No ❌</button>
+  </div>
+</div>
+
+<!-- Miss You Popups -->
+<div class="popup" id="missYouPopupUnique">
+  <p>I really miss you my love 💖</p>
+  <p>Do you miss me too? 💞</p>
+  <div>
+    <button onclick="missYouAnswerUnique(true)">Yes 💖</button>
+    <button onclick="missYouAnswerUnique(false)">No ❌</button>
+  </div>
+</div>
+<div class="popup" id="missYouMessagePopupUnique">
+  <p id="missYouMessageUnique" style="color:#ff6f91; line-height:1.5;">
+    I miss your kiss 😘, I miss your touch 🤗, I miss your vlog 🥰, I miss holding you 💞, I miss our moments 💖✨ but I love you so much
+  </p>
+  <button onclick="closeMissYouMessageUnique()">Close 💖</button>
+</div>
+
+<footer class="romantic-footer">
+  <p>Made with ❤️ and endless love by Chris 💖 for my dearest Ineza 🌹</p>
+  <p>Forever yours, Chris 💌</p>
+</footer>
+
+<script>
+/* === Slideshow === */
+let slideIndex=0;
+showSlides(slideIndex);
+function changeSlide(n){ showSlides(slideIndex+=n); }
+function showSlides(n){
+  let slides=document.getElementsByClassName('slides');
+  if(n>=slides.length) slideIndex=0;
+  if(n<0) slideIndex=slides.length-1;
+  for(let i=0;i<slides.length;i++) slides[i].style.display="none";
+  slides[slideIndex].style.display="block";
+}
+setInterval(()=>changeSlide(1),5000);
+
+/* === Popups === */
+function showMessage(msg){
+  const popup=document.getElementById('popup');
+  document.getElementById('popupText').innerText=msg;
+  popup.classList.add('show');
+}
+function closePopup(){ document.getElementById('popup').classList.remove('show'); }
+
+/* === Video Popup === */
+function showVideoPopup(src){
+  const popup=document.getElementById('videoPopup');
+  const video=document.getElementById('popupVideo');
+  video.src=src;
+  popup.classList.add('show');
+}
+function closeVideoPopup(){
+  const popup=document.getElementById('videoPopup');
+  const video=document.getElementById('popupVideo');
+  popup.classList.remove('show');
+  video.pause(); video.src='';
+}
+
+/* === Confetti === */
+function confettiEffect(){
+  for(let i=0;i<30;i++){
+    let confetti=document.createElement('div');
+    confetti.className='floating';
+    confetti.style.left=Math.random()*window.innerWidth+'px';
+    confetti.style.top=Math.random()*window.innerHeight+'px';
+    confetti.innerHTML=colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(confetti);
+    setTimeout(()=>{confetti.remove();},1000+Math.random()*1000);
+  }
+}
+
+/* === Memory Question Logic === */
+function showMemoryQuestion(){ document.getElementById('memoryPopup').classList.add('show'); }
+function memoryAnswer(ans){
+  document.getElementById('memoryPopup').classList.remove('show');
+  if(ans) document.getElementById('memoryRecoverPopup').classList.add('show');
+}
+function recoverAnswer(ans){
+  document.getElementById('memoryRecoverPopup').classList.remove('show');
+  if(ans) showVideoPopup('videos/night.mp4');
+}
+
+/* === Friendly Night Logic === */
+function showFriendlyNightQuestion(){ document.getElementById('friendlyNightPopup').classList.add('show'); }
+function friendlyNightAnswer(ans){
+  document.getElementById('friendlyNightPopup').classList.remove('show');
+  if(ans) document.getElementById('friendlyRecoverPopup').classList.add('show');
+}
+function friendlyRecoverAnswer(ans){
+  document.getElementById('friendlyRecoverPopup').classList.remove('show');
+  if(ans) showVideoPopup('videos/our.mp4');
+}
+
+/* === Miss You Logic === */
+document.getElementById('checkLoveBtn').addEventListener('click', ()=>{
+  document.getElementById('missYouPopupUnique').classList.add('show');
+});
+function missYouAnswerUnique(ans){
+  document.getElementById('missYouPopupUnique').classList.remove('show');
+  if(ans){
+    document.getElementById('missYouMessagePopupUnique').classList.add('show');
+    confettiEffect();
+    floatingHeartsEffect();
+  }
+}
+function closeMissYouMessageUnique(){ document.getElementById('missYouMessagePopupUnique').classList.remove('show'); }
+
+/* Floating Hearts Effect */
+function floatingHeartsEffect(){
+  for(let i=0;i<30;i++){
+    let span=document.createElement('div');
+    span.className='floating';
+    span.style.left=Math.random()*100+'%';
+    span.style.fontSize=(15+Math.random()*25)+'px';
+    span.style.animationDuration=(3+Math.random()*3)+'s';
+    span.innerHTML=colors[Math.floor(Math.random()*colors.length)];
+    document.body.appendChild(span);
+    setTimeout(()=>{span.remove();},4000);
+  }
+}
+
+/* Scroll fade-in */
+const sections=document.querySelectorAll('.section');
+window.addEventListener('scroll',()=>{
+  const triggerBottom=window.innerHeight/5*4;
+  sections.forEach(section=>{
+    if(section.getBoundingClientRect().top<triggerBottom) section.classList.add('show');
+  });
+});
+
+/* Background music */
+const bgMusic=document.getElementById('bgMusic'); bgMusic.volume=0.2;
+document.body.addEventListener('click', ()=>{ bgMusic.play().catch(()=>{}); });
+
+/* Click header for surprise hearts */
+document.getElementById('inezaName').addEventListener('click', ()=>{
+  showMessage('Ineza, you are my heart, my soul, my everything ❤️💖💕');
+  floatingHeartsEffect();
+});
+</script>
+</body>
+</html>
